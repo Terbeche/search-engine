@@ -10,11 +10,18 @@ consumer.subscriptions.create("SearchChannel", {
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
-    // Update the search analytics on the page with the new data
     let searchList = document.querySelector("#search-list");
-    let newSearch = document.createElement("li");
-    newSearch.innerText = data.term;
-    searchList.appendChild(newSearch);
+    let searchItems = Array.from(searchList.getElementsByTagName("li"));
+    let item = searchItems.find(item => item.innerText.split(' - ')[0] === data.term);
+    if (item) {
+      item.innerText = `${data.term} - ${data.count}`;
+    } else {
+      item = document.createElement("li");
+      item.innerText = `${data.term} - ${data.count}`;
+      searchList.appendChild(item);
+    }
+    Array.from(searchList.getElementsByTagName("li"))
+      .sort((a, b) => Number(b.innerText.split(' - ')[1]) - Number(a.innerText.split(' - ')[1]))
+      .forEach(li => searchList.appendChild(li));
   }
 });
