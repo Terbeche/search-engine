@@ -2,8 +2,9 @@
     <%= form.text_field :term %>
     <%= form.submit 'Search' %>
 <% end %>
-  
 
-<% @searches.each do |search| %>
-    <p><%= search.term %></p>
-<% end %>
+<ul id="search-list">
+  <% @searches.each do |search| %>
+    <li><%= search.term %></li>
+  <% end %>
+</ul>
