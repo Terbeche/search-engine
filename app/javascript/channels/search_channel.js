@@ -11,17 +11,22 @@ consumer.subscriptions.create("SearchChannel", {
 
   received(data) {
     let searchList = document.querySelector("#search-list");
-    let searchItems = Array.from(searchList.getElementsByTagName("li"));
-    let item = searchItems.find(item => item.innerText.split(' - ')[0] === data.term);
+    let searchItems = Array.from(searchList.getElementsByTagName("tr"));
+    let item = searchItems.find(item => item.cells[0].innerText === data.term);
     if (item) {
-      item.innerText = `${data.term} - ${data.count}`;
+      item.cells[1].innerText = data.count;
     } else {
-      item = document.createElement("li");
-      item.innerText = `${data.term} - ${data.count}`;
+      item = document.createElement("tr");
+      let termCell = document.createElement("td");
+      termCell.innerText = data.term;
+      item.appendChild(termCell);
+      let countCell = document.createElement("td");
+      countCell.innerText = data.count;
+      item.appendChild(countCell);
       searchList.appendChild(item);
     }
-    Array.from(searchList.getElementsByTagName("li"))
-      .sort((a, b) => Number(b.innerText.split(' - ')[1]) - Number(a.innerText.split(' - ')[1]))
-      .forEach(li => searchList.appendChild(li));
-  }
+    Array.from(searchList.getElementsByTagName("tr"))
+      .sort((a, b) => Number(b.cells[1].innerText) - Number(a.cells[1].innerText))
+      .forEach(tr => searchList.appendChild(tr));
+  }  
 });

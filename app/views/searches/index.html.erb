@@ -1,12 +1,22 @@
 <%= form_with url: searches_path, method: :post, local: true do |form| %>
   <%= form.text_field :term, id: 'search-input' %>
-  <%= form.submit 'Search' %>
 <% end %>
 
-<ul id="search-list">
-  <% @most_common_searches.each do |search| %>
-    <li><%= search.term %></li>
-  <% end %>
-</ul>
+<table id="search-list">
+  <thead>
+    <tr>
+      <th>Search Term</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @most_common_searches.each do |search| %>
+      <tr>
+        <td><%= search.term %></td>
+        <td><%= search.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= javascript_include_tag('searches.js')%>
