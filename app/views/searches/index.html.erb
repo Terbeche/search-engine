@@ -1,6 +1,6 @@
 <%= form_with url: searches_path, method: :post, local: true do |form| %>
-    <%= form.text_field :term %>
-    <%= form.submit 'Search' %>
+  <%= form.text_field :term, id: 'search-input' %>
+  <%= form.submit 'Search' %>
 <% end %>
 
 <ul id="search-list">
@@ -8,3 +8,5 @@
     <li><%= search.term %></li>
   <% end %>
 </ul>
+
+<%= javascript_include_tag('searches.js')%>
