@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe SearchChannel, type: :channel do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    # Initialize connection with identifiers
+    stub_connection
+  end
+
+  it 'successfully subscribes and streams from search_channel' do
+    subscribe
+    expect(subscription).to be_confirmed
+    expect(subscription).to have_stream_from('search_channel')
+  end
 end
