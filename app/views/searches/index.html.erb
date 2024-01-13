@@ -29,4 +29,10 @@
   {name: search.term, data: SearchLog.where(search_id: search.id).group_by_day(:created_at).count}
 end) %>
 
+<h2>Demo Video</h2>
+<video controls>
+  <source src="/search.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 <%= javascript_include_tag('searches.js')%>
