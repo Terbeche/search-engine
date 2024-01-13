@@ -1,7 +1,9 @@
+<h2 class="title">Search Form</h2>
 <%= form_with url: searches_path, method: :post, local: true do |form| %>
   <%= form.text_field :term, id: 'search-input' %>
 <% end %>
 
+<h2>Most Common Searches</h2>
 <table id="search-list">
   <thead>
     <tr>
@@ -19,8 +21,10 @@
   </tbody>
 </table>
 
+<h2>Daily Search Log Count</h2>
 <%= line_chart SearchLog.group_by_day(:created_at).count %>
 
+<h2>Most Common Search Trends</h2>
 <%= line_chart(@most_common_searches.map do |search| 
   {name: search.term, data: SearchLog.where(search_id: search.id).group_by_day(:created_at).count}
 end) %>

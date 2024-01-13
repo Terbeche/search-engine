@@ -53,3 +53,14 @@ body {
     background-color: blueviolet;
   }
   
+  h2 {
+    text-align: center;
+    font-size: 1.5em;
+    color: #007BFF;
+    margin: 4rem 0rem;
+  }
+
+  .title {
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+  }

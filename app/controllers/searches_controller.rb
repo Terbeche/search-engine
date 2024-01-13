@@ -7,8 +7,6 @@ class SearchesController < ApplicationController
     def index
         @searches = Search.where(ip: request.remote_ip)
         @most_common_searches = Search.most_common(ip: request.remote_ip)
-
-        # Calculate and display your analytics here
     end
 
     private

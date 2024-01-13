@@ -18,9 +18,9 @@ document.querySelector('#search-input').addEventListener('input', debounce(funct
             'Content-Type': 'application/json',
             'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         },
-        body: JSON.stringify({ search: { term: this.value.trim() } }) // Send the trimmed search term
+        body: JSON.stringify({ search: { term: this.value.trim() } })
     });
-}, 500));
+}, 1000));
 
 document.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault();
