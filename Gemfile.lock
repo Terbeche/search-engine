@@ -124,6 +124,7 @@ GEM
     minitest (5.21.1)
     msgpack (1.7.2)
     mutex_m (0.2.0)
+    mysql2 (0.5.5)
     net-imap (0.4.9.1)
       date
       net-protocol
@@ -146,7 +147,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
-    pg (1.5.4)
     psych (5.1.2)
       stringio
     puma (6.4.2)
@@ -261,7 +261,7 @@ DEPENDENCIES
   hiredis
   importmap-rails
   jbuilder
-  pg (~> 1.2, >= 1.2.3)
+  mysql2 (~> 0.5, >= 0.5.3)
   puma (>= 5.0)
   rails (~> 7.1.2)
   redis (>= 4.0.1)

@@ -1,35 +1,10 @@
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  host: <%= ENV['POSTGRES_HOST'] %>
-
-development:
-  <<: *default
-  database: search_engine_development
-
-test:
-  <<: *default
-  database: search_engine_test
-
-production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-  database: search_engine_production
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-
-
-
 # default: &default
-#   adapter: mysql2
-#   encoding: utf8mb4
+#   adapter: postgresql
+#   encoding: unicode
 #   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   username: root
-#   password: 6991
-#   socket: /var/run/mysqld/mysqld.sock
+#   username: <%= ENV['POSTGRES_USER'] %>
+#   password: <%= ENV['POSTGRES_PASSWORD'] %>
+#   host: <%= ENV['POSTGRES_HOST'] %>
 
 # development:
 #   <<: *default
@@ -43,5 +18,31 @@ production:
 #   <<: *default
 #   url: <%= ENV['DATABASE_URL'] %>
 #   database: search_engine_production
-#   username: myapp
-#   password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+#   username: <%= ENV['POSTGRES_USER'] %>
+#   password: <%= ENV['POSTGRES_PASSWORD'] %>
+
+
+
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: 6991
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: search_engine_development
+
+test:
+  <<: *default
+  database: search_engine_test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  database: search_engine_production
+  username: myapp
+  password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+  

@@ -1,14 +1,11 @@
-let lastSearchTerm = "";
-
 function debounce(func, wait) {
     let timeout;
     return function() {
-        let newSearchTerm = this.value.trim(); // Trim the search term
+        let newSearchTerm = this.value.trim();
         clearTimeout(timeout);
         timeout = setTimeout(() => {
-            if (newSearchTerm !== "" && newSearchTerm !== lastSearchTerm) { // Check if the search term is not empty
+            if (newSearchTerm !== "") {
                 func.apply(this, arguments);
-                lastSearchTerm = newSearchTerm;
             }
         }, wait);
     };
