@@ -19,4 +19,10 @@
   </tbody>
 </table>
 
+<%= line_chart SearchLog.group_by_day(:created_at).count %>
+
+<%= line_chart(@most_common_searches.map do |search| 
+  {name: search.term, data: SearchLog.where(search_id: search.id).group_by_day(:created_at).count}
+end) %>
+
 <%= javascript_include_tag('searches.js')%>
