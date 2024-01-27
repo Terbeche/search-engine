@@ -1,6 +1,6 @@
 # Portfolio
 
->This is a search engine 
+>This is a search engine where we save the search terms entered by users, based on their IP addresses, and then perform analytics on these searches
 
 ## Screen shots
 
